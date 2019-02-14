@@ -22,15 +22,18 @@
     border: none;
     border-radius: 15px;
     background-color: rgb(72, 180, 0);
-    box-shadow: 0 5px rgb(150, 150, 150);
+    box-shadow: 0 6px rgb(150, 150, 150);
 }
 button.picker:hover {
     background-color: rgb(54, 136, 0);
 }
 button.picker:active {
     background-color: rgb(54, 136, 0);
-    box-shadow: 0 5px rgb(100, 100, 100);
+    box-shadow: 0 3px rgb(100, 100, 100);
     transform: translateY(4px);
+}
+button.picker:focus {
+    outline: 0;
 }
 
 .completeDiv {
