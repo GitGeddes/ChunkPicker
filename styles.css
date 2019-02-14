@@ -1,0 +1,171 @@
+.controls {
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    width: 98%;
+    height: 98%;
+    z-index: 4;
+    pointer-events: none;
+}
+.picker {
+    position: relative;
+    top: 3%;
+    left: 50%;
+    width: 200px;
+    height: 60px;
+    margin: -150px -125px;
+    font-size: 1.2em;
+
+    cursor: pointer;
+    pointer-events: auto;
+
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(72, 180, 0);
+    box-shadow: 0 5px rgb(150, 150, 150);
+}
+button.picker:hover {
+    background-color: rgb(54, 136, 0);
+}
+button.picker:active {
+    background-color: rgb(54, 136, 0);
+    box-shadow: 0 5px rgb(100, 100, 100);
+    transform: translateY(4px);
+}
+
+.completeDiv {
+    position: absolute;
+    overflow: hidden;
+    top: 1%;
+    left: 1%;
+    outline: 2px solid black;
+    width: 98%;
+    height: 98%;
+    background-color: rgb(98, 119, 166);
+}
+.imgDiv {
+    position: absolute;
+    overflow: hidden;
+    width: 5000px;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+}
+.map {
+    float: left;
+    z-index: 1;
+    width: 100%;
+}
+
+.btnDiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: repeat(43, 2.3256% [col-start]);
+    grid-template-rows: repeat(25, 4% [row-start]);
+
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.invisible {
+    color: transparent;
+    background-color: transparent;
+    border-color: transparent;
+    outline: 0;
+    border: 0px;
+    padding: 0px;
+    cursor: pointer;
+    z-index: 3;
+}
+div.invisible:hover {
+    background-color: rgba(209, 42, 75, 0.2);
+}
+.visible {
+    background-color: rgba(75, 209, 42, 0.4);
+    border-color: transparent;
+    outline: 0;
+    border: 0px;
+    padding: 0px;
+    cursor: pointer;
+    z-index: 3;
+
+    text-align: center;
+    font-size: 42pt;
+    padding: 20%;
+    color: yellow;
+    transition: color 1s ease-in;
+
+    text-shadow:
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+}
+div.visible:hover {
+    background-color: rgba(200, 200, 200, 0.25);
+}
+.potential {
+    display: table-cell;
+    background-color: rgba(209, 42, 75, 0.4);
+    border-color: transparent;
+    outline: 0;
+    border: 0px;
+    cursor: pointer;
+    z-index: 3;
+
+    text-align: center;
+    font-size: 42pt;
+    padding: 20%;
+    color: yellow;
+
+    text-shadow:
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+}
+div.potential:hover {
+    background-color: rgba(75, 209, 42, 0.25);
+}
+.between {
+    background-color: rgba(75, 209, 42, 0.4);
+    transition: background 1s ease-in;
+
+    text-align: center;
+    font-size: 42pt;
+    padding: 20%;
+    color: yellow;
+
+    text-shadow:
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+}
+
+.disclaimer {
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 550px;
+    align-items: center;
+
+    background-image: linear-gradient(rgba(75, 75, 75, 0.75), rgba(150, 150, 150, 0.75));
+
+    font-size: 14pt;
+    color: white;
+    text-align: center;
+}
+
+p {
+    margin: 0;
+}
