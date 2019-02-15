@@ -11,10 +11,6 @@
 
 <body>
 <div class="menuBackground" id="menuTopParent">
-	<select id="menuSelector" class="menuSelector" onchange="openMenu(this[this.selectedIndex].value);">
-		<option value="UNLOCKER">Chunk Unlocker</option>
-		<option value="CHUNKINFO">Chunk Info</option>
-	</select>
 	<div id="subMenuParents">
 		<div class="menuParent" id="UNLOCKER">
 			<div class="controls" id="controls">
@@ -26,7 +22,11 @@
 		</div>
 	</div>
 </div>
-
+<select id="menuSelector" class="menuSelector" onchange="openMenu(this[this.selectedIndex].value);">
+	<option value="NONE">Toggle Menu</option>
+	<option value="UNLOCKER">Chunk Unlocker</option>
+	<option value="CHUNKINFO">Chunk Info</option>
+</select>
 <div class="completeDiv" id="superParent">
 	<div class="imgDiv" id="imgDiv">
 		<img class="overlay" id="overlay" src="grid overlay.png">

@@ -199,9 +199,15 @@ p {
 .menuParent {
 	position: relative;
 	display: none;
+	top: 60px;
 }
 
 .menuSelector {
+	display: block;
+	position: absolute;
+	right: 0%;
+	top: 0%;
 	height: 50px;
 	width: 200px;
+	z-index: 10;
 }

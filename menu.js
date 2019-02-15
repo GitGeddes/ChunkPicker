@@ -7,6 +7,7 @@
 const MenuState = {
 	UNLOCKER: 'UNLOCKER',
 	CHUNKINFO: 'CHUNKINFO',
+	NONE: 'NONE',
 };
 /**
  * The currently open menu
@@ -20,13 +21,13 @@ let menuTopParent;
 let menuParents = {};
 
 $(document).ready(function () {
-	menuTopParent = $("#menuTopParent");
+	menuTopParent = $("#menuTopParent")[0];
 	const children = document.getElementsByClassName('menuParent');
 	for (let i = 0; i < children.length; i++) {
 		const child = children[i];
 		menuParents[child.id] = child;
 	}
-	openMenu(MenuState.UNLOCKER);
+	openMenu(MenuState.NONE);
 });
 
 
@@ -36,13 +37,38 @@ function openMenu(newMenuState) {
 		return;
 	}
 
-	if (currentMenuState !== undefined){
-		menuParents[MenuState[currentMenuState]].style.display = 'none';
+	menuTopParent.style.display = 'block';
+
+	let oldMenuParent = menuParents[MenuState[currentMenuState]];
+	if (oldMenuParent !== undefined) {
+		oldMenuParent.style.display = 'none';
 	}
 
 	currentMenuState = newMenuState;
-	menuParents[MenuState[currentMenuState]].style.display = 'block';
+	let newMenuParent = menuParents[MenuState[currentMenuState]];
+	if (newMenuParent !== undefined) {
+		newMenuParent.style.display = 'block';
+	}
+
+	onMenuOpened(newMenuState);
+}
+
+function closeMenu() {
+	menuTopParent.style.display = 'none';
 }
 
 
-
+function onMenuOpened(menuState) {
+	switch (menuState) {
+		case MenuState.UNLOCKER: {
+			break;
+		}
+		case MenuState.CHUNKINFO: {
+			break;
+		}
+		case MenuState.NONE: {
+			closeMenu();
+			break;
+		}
+	}
+}
