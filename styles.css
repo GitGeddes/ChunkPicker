@@ -15,20 +15,20 @@
     height: 60px;
     margin: -150px -125px;
     font-size: 1.2em;
+    color: black;
 
     cursor: pointer;
     pointer-events: auto;
 
     border: none;
     border-radius: 15px;
-    background-color: rgb(72, 180, 0);
+    background-color: rgb(71, 177, 0);
     box-shadow: 0 6px rgb(150, 150, 150);
 }
 button.picker:hover {
-    background-color: rgb(54, 136, 0);
+    background-color: rgb(61, 153, 0);
 }
 button.picker:active {
-    background-color: rgb(54, 136, 0);
     box-shadow: 0 3px rgb(100, 100, 100);
     transform: translateY(3px);
 }
@@ -80,7 +80,7 @@ button.picker:focus {
 }
 .locked {
     color: transparent;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.45);
     border-color: transparent;
     outline: 0;
     border: 0px;
@@ -92,10 +92,10 @@ div.locked:hover {
     background-color: rgba(12, 184, 46, 0.2);
 }
 .unlocked {
-    background-color: transparent;
-    border-color: transparent;
+    border-color: red;
+    border-style: solid;
+    border-width: 0px;
     outline: 0;
-    border: 0px;
     padding: 0px;
     cursor: pointer;
     z-index: 3;
@@ -103,7 +103,7 @@ div.locked:hover {
     text-align: center;
     font-size: 50pt;
     padding: 15%;
-    color: yellow;
+    color: rgb(255, 230, 0);
     transition: color 1s ease-in;
 
     text-shadow:
@@ -127,7 +127,7 @@ div.unlocked:hover {
     text-align: center;
     font-size: 50pt;
     padding: 15%;
-    color: yellow;
+    color: rgb(255, 230, 0);
 
     text-shadow:
         -1px -1px 0 black,
@@ -145,7 +145,7 @@ div.potential:hover {
     text-align: center;
     font-size: 50pt;
     padding: 15%;
-    color: yellow;
+    color: rgb(255, 230, 0);
 
     text-shadow:
         -1px -1px 0 black,
