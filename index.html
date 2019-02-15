@@ -35,7 +35,7 @@
       for (var i = 0; i < rows; i++) {
         for (var j = 0; j < columns; j++) {
           var btn = document.createElement("div");
-          btn.className = "invisible";
+          btn.className = "locked";
           btn.id = "button" + (i * columns + j).toString();
           btn.setAttribute("onclick", "toggleChunkButton(this.id)");
           document.getElementById("btnDiv").appendChild(btn);
@@ -50,7 +50,7 @@
       }
       else {
         var btn = document.getElementById(id);
-        if (btn.className == "invisible") {
+        if (btn.className == "locked") {
           counter += 1;
           btn.innerText = counter;
           btn.className = "potential";
@@ -58,10 +58,11 @@
         else if (btn.className == "potential") {
           counter -= 1;
           btn.innerText = "";
-          btn.className = "visible";
+          btn.className = "unlocked";
         }
-        else if (btn.className == "visible") {
-          btn.className = "invisible";
+        else if (btn.className == "unlocked") {
+          btn.className = "locked";
+          btn.innerText = "";
         }
       }
     }
@@ -76,11 +77,11 @@
           var chunk = chunks[i];
           chunk.className = "between";
           setTimeout(function() {
-            chunk.className = "visible";
+            chunk.className = "unlocked";
           }, 1000);
         }
         else {
-          chunks[i].className = "invisible";
+          chunks[i].className = "locked";
         }
       }
 
