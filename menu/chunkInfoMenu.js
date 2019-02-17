@@ -72,7 +72,7 @@ function selectChunk(id) {
 			btn.style.borderWidth = '0px';
 			btn.innerText = "";
 		}
-		
+
 	}
 
 	drawUnlockedBorders();

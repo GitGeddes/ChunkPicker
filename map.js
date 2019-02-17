@@ -132,6 +132,7 @@ function pickPotentialChunk() {
 			chunks[i].className = "locked";
 		}
 	}
+	potentialChunks = [];
 	counter = 0;
 }
 
