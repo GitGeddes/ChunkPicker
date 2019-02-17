@@ -5,7 +5,8 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="utils/chunkIds.js"></script>
 	<script src="map.js"></script>
-	<script src="menu.js"></script>
+	<script src="menu/menu.js"></script>
+	<script src="menu/chunkInfoMenu.js"></script>
 	<link rel="stylesheet" href="styles.css">
 </head>
 
@@ -17,13 +18,24 @@
 				<button class="picker" onclick="pickPotentialChunk()">Pick a random potential chunk!</button>
 			</div>
 		</div>
+
 		<div class="menuParent" id="CHUNKINFO">
-			<div>WIP!</div>
+			<div>
+				<div><strong>Selected Chunk</strong></div>
+				<div id="chunkInfoPosition">Chunk Position</div>
+				<div id="chunkInfoID">Chunk ID</div>
+			</div>
+			<br>
+			<div id="notesParent" class="notesParent">
+				<div><strong>Chunk Notes</strong></div>
+				<textarea id="notesTextBox" type="text" class="notesTextBox" onchange="onNoteChanged(this.value)"></textarea>
+			</div>
+
 		</div>
 	</div>
 </div>
 <select id="menuSelector" class="menuSelector" onchange="openMenu(this[this.selectedIndex].value);">
-	<option value="NONE">Toggle Menu</option>
+	<option value="NONE">Menu</option>
 	<option value="UNLOCKER">Chunk Unlocker</option>
 	<option value="CHUNKINFO">Chunk Info</option>
 </select>

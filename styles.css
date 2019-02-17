@@ -126,6 +126,7 @@ div.unlocked:hover {
 	background-color: rgba(10, 10, 10, 0.2);
 }
 
+
 .potential {
 	display: table-cell;
 	background-color: rgba(12, 184, 46, 0.4);
@@ -148,6 +149,30 @@ div.unlocked:hover {
 
 div.potential:hover {
 	background-color: rgba(200, 200, 200, 0.25);
+}
+
+.selected {
+	border-color: yellow;
+	border-style: solid;
+	border-width: 2px;
+	outline: 0;
+	padding: 0px;
+	cursor: pointer;
+	z-index: 3;
+
+	text-align: center;
+	font-size: 50pt;
+	padding: 15%;
+	color: rgb(255, 230, 0);
+	transition: color 1s ease-in;
+
+	text-shadow: -1px -1px 0 black,
+	1px -1px 0 black,
+	-1px 1px 0 black,
+	1px 1px 0 black;
+}
+div.selected:hover {
+	background-color: rgba(10, 10, 10, 0.2);
 }
 
 .between {
@@ -210,4 +235,27 @@ p {
 	height: 50px;
 	width: 200px;
 	z-index: 10;
+}
+
+input[type=text] {
+	padding: 0;
+	height: 30px;
+	position: relative;
+	left: 0;
+	outline: none;
+	border: 1px solid #cdcdcd;
+	border-color: rgba(0, 0, 0, .15);
+	background-color: white;
+	font-size: 16px;
+}
+
+.notesTextBox {
+	width: 100%;
+	height: 100%;
+	margin-right: -4px;
+}
+.notesParent{
+	top:100px;
+	width: 100%;
+	height: 400px;
 }

@@ -48,7 +48,7 @@ const chunkIDs = {
 	 * @returns spriteIndex {number}
 	 */
 	getSpriteIndexFromPosition: function (pos) {
-		return (pos.y * rows) + pos.x;
+		return (pos.y * cols) + pos.x;
 	},
 	/**
 	 * @param spriteIndex {number}
@@ -56,8 +56,8 @@ const chunkIDs = {
 	 */
 	getPositionFromSpriteIndex: function (spriteIndex) {
 		return {
-			x: Math.floor(spriteIndex / rows),
-			y: spriteIndex % rows
+			x: Math.floor(spriteIndex / cols),
+			y: spriteIndex % cols
 		};
 	},
 	/**
@@ -78,4 +78,16 @@ const chunkIDs = {
 		}
 		return {x, y};
 	},
+};
+
+window['drawChunkIDs'] = ()=>{
+	const lockedChunks = document.getElementsByClassName('locked');
+	for (var i = 0; i < lockedChunks.length; i++) {
+		var chunk = lockedChunks[i];
+		chunk.className = "potential";
+		chunk.style.color = "0xFFFFFF";
+		chunk.style.fontSize = "10pt";
+		let id = chunk.id;
+		chunk.innerHTML=`${id}<br>${JSON.stringify(chunkIDs.getPositionFromSpriteIndex(id))}<br>${chunkIDs.getChunkIDFromSpriteIndex(id)}`;
+	}
 };
