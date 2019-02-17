@@ -78,7 +78,7 @@ function onImportComplete(data) {
 
 	unlockedChunks = [];
 	for (var i = 0; i < unlocked.length; i++) {
-		var chunkID = unlocked[i];
+		var chunkID = Number(unlocked[i]);
 		unlockChunk(chunkIDs.getSpriteIndexFromChunkID(chunkID));
 	}
 
@@ -86,7 +86,7 @@ function onImportComplete(data) {
 	potentialChunks = [];
 	const potential = data.potentialChunks;
 	for (var i = 0; i < potential.length; i++) {
-		var chunkID = potential[i];
+		var chunkID = Number(potential[i]);
 		potentialChunks.push(chunkIDs.getSpriteIndexFromChunkID(chunkID));
 	}
 

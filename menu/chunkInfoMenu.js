@@ -61,6 +61,7 @@ function onChunkInfoMenuClosed() {
  * @param id
  */
 function selectChunk(id) {
+	id = Number(id);
 	// Deselect old chunk
 	if (currentChunk !== undefined) {
 		removeSelectionClass(currentChunk);

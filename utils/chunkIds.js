@@ -56,8 +56,8 @@ const chunkIDs = {
 	 */
 	getPositionFromSpriteIndex: function (spriteIndex) {
 		return {
-			x: Math.floor(spriteIndex / cols),
-			y: spriteIndex % cols
+			x: spriteIndex % cols,
+			y: Math.floor(spriteIndex / cols)
 		};
 	},
 	/**

@@ -27,7 +27,7 @@ function chunkClicked(id) {
 		dragging = false;
 	}
 	else {
-		onChunkPicked(id)
+		onChunkPicked(Number(id));
 	}
 }
 
