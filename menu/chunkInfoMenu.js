@@ -115,8 +115,7 @@ function updateSearch(newSearch) {
 		const btn = document.getElementById(id);
 		btn.style.borderWidth = "2px";
 		btn.innerText = "";
-		btn.className = "searchedChunk";
-
+		btn.className = "searchedChunk" + (unlockedChunks.indexOf(id) !== -1 ? ' unlocked' : ' locked');
 	});
 }
 

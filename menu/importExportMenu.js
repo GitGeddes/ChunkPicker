@@ -68,9 +68,6 @@ function onMergeComplete(data) {
 		}
 	}
 
-	if (currentChunk !== undefined){
-		selectChunk(currentChunk);
-	}
 }
 
 function onImportComplete(data) {
@@ -96,9 +93,6 @@ function onImportComplete(data) {
 	// Notes
 	notesForChunks = data.chunkNotes;
 
-	if (currentChunk !== undefined){
-		selectChunk(currentChunk);
-	}
 }
 
 function importButtonClicked() {
@@ -126,6 +120,12 @@ function onSaveFileImported() {
 	reader.onload = function (event) {
 		var jsonObj = JSON.parse(event.target.result);
 		onFileImported(jsonObj);
+
+		updateSearch(currentSearch);
+		if (currentChunk !== undefined){
+			selectChunk(currentChunk);
+		}
+
 	};
 
 	reader.readAsText(file);
