@@ -7,6 +7,7 @@
 const MenuState = {
 	UNLOCKER: 'UNLOCKER',
 	CHUNKINFO: 'CHUNKINFO',
+	IMPORTEXPORT: 'IMPORTEXPORT',
 	NONE: 'NONE',
 };
 /**
@@ -39,7 +40,6 @@ $(document).ready(function () {
  * @param newMenuState
  */
 function openMenu(newMenuState) {
-	console.log(newMenuState);
 	if (currentMenuState === newMenuState) {
 		return;
 	}
@@ -85,6 +85,10 @@ function onMenuOpened(menuState) {
 			onChunkInfoMenuOpened();
 			break;
 		}
+		case MenuState.IMPORTEXPORT: {
+			onImportMenuOpened();
+			break;
+		}
 		case MenuState.NONE: {
 			closeMenu();
 			onChunkPicked = selectChunk;
@@ -106,6 +110,10 @@ function onMenuClosed(menuState) {
 		}
 		case MenuState.CHUNKINFO: {
 			onChunkInfoMenuClosed();
+			break;
+		}
+		case MenuState.IMPORTEXPORT: {
+			onImportMenuClosed();
 			break;
 		}
 		case MenuState.NONE: {

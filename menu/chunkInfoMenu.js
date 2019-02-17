@@ -61,7 +61,6 @@ function onChunkInfoMenuClosed() {
  * @param id
  */
 function selectChunk(id) {
-	console.log(`Selected Chunk ${id}`);
 	// Deselect old chunk
 	if (currentChunk !== undefined) {
 		removeSelectionClass(currentChunk);
@@ -117,7 +116,6 @@ function updateSearch(newSearch) {
 		btn.style.borderWidth = "2px";
 		btn.innerText = "";
 		btn.className = "searchedChunk";
-		console.log("Search hit "+id);
 
 	});
 }

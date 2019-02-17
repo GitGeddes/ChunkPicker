@@ -1,7 +1,6 @@
 var rows = 25;
 var cols = 43;
 var dragging = false;
-var counter = 0;
 var unlockedChunks = [];
 var potentialChunks = [];
 
@@ -73,18 +72,18 @@ function toggleChunkButton(id) {
 
 function addChunkAsPotential(id) {
 	var btn = document.getElementById(id);
-	counter += 1;
-	btn.innerText = counter;
-	btn.className = "potential";
+
 	unlockedChunks = removeElementFromArray(unlockedChunks, id);
 	if (potentialChunks.indexOf(id) === -1) {
 		potentialChunks.push(id);
 	}
+
+	btn.innerText = potentialChunks.indexOf(id)+1;
+	btn.className = "potential";
 }
 
 function unlockChunk(id) {
 	var btn = document.getElementById(id);
-	counter -= 1;
 	btn.innerText = "";
 	btn.className = "unlocked";
 
@@ -133,7 +132,6 @@ function pickPotentialChunk() {
 		}
 	}
 	potentialChunks = [];
-	counter = 0;
 }
 
 function getAdjacentTileIDs(id) {
@@ -199,10 +197,8 @@ function removeUnlockedTileNumbers() {
 }
 
 function drawUnlockedBorders() {
-	var unlocked = document.getElementsByClassName("unlocked");
-
-	for (var i = 0; i < unlocked.length; i++) {
-		makeBorders(unlocked[i].id);
+	for (var i = 0; i < unlockedChunks.length; i++) {
+		makeBorders(unlockedChunks[i]);
 	}
 }
 
@@ -221,7 +217,6 @@ function removeElementFromArray(array, element) {
  */
 function onUnlockerMenuOpened() {
 	onChunkPicked = toggleChunkButton;
-	counter = 0;
 	for (var i = 0; i < potentialChunks.length; i++) {
 		var chunkID = potentialChunks[i];
 		addChunkAsPotential(chunkID);

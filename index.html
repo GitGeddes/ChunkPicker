@@ -7,6 +7,7 @@
 	<script src="map.js"></script>
 	<script src="menu/menu.js"></script>
 	<script src="menu/chunkInfoMenu.js"></script>
+	<script src="menu/importExportMenu.js"></script>
 	<link rel="stylesheet" href="styles.css">
 </head>
 
@@ -35,12 +36,26 @@
 				<input id="searchTextBox" type="text" class="searchField" oninput="updateSearch(this.value)"></input>
 			</div>
 		</div>
+		<div class="menuParent" id="IMPORTEXPORT">
+			<button style="background-color: cadetblue;" id="exportButton" onclick="createExportJson()">Export</button>
+			<a id="downloadAnchorElem" style="display:none"></a>
+			<br>
+			<br>
+			<button style="background-color: coral;" id="importButton" onclick="importButtonClicked()">Import</button>
+			<br>
+			<br>
+			<button style="background-color: coral;" id="mergeButton" onclick="mergeButtonClicked()">Merge Notes (Import) </button>
+			<br>
+			<br>
+			<input style="visibility:hidden" type="file" accept=".json" id="importFileSelector" oninput="onSaveFileImported()">
+		</div>
 	</div>
 </div>
 <select id="menuSelector" class="menuSelector" onchange="openMenu(this[this.selectedIndex].value);">
 	<option value="NONE">Menu</option>
 	<option value="UNLOCKER">Chunk Unlocker</option>
 	<option value="CHUNKINFO">Chunk Info</option>
+	<option value="IMPORTEXPORT">Import / Export</option>
 </select>
 <div class="completeDiv" id="superParent">
 	<div class="imgDiv" id="imgDiv">
