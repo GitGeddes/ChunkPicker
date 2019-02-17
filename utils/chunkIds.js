@@ -48,7 +48,7 @@ const chunkIDs = {
 	 * @returns spriteIndex {number}
 	 */
 	getSpriteIndexFromPosition: function (pos) {
-		return (pos.y * cols) + pos.x;
+		return (pos.x * cols) + pos.y;
 	},
 	/**
 	 * @param spriteIndex {number}
@@ -73,7 +73,7 @@ const chunkIDs = {
 		if (y > 0) {
 			y = chunkIDs.xIncrease - y;
 		}
-		if (chunkID > 0) {
+		if (y > 0) {
 			x += 1;
 		}
 		return {x, y};

@@ -2,9 +2,9 @@
  * Created by jespe on 2019-02-17.
  */
 
-var infoPositionDiv;
-var infoIDDiv;
-var notesTextBox;
+let infoPositionDiv;
+let infoIDDiv;
+let notesTextBox;
 $(document).ready(function () {
 	infoPositionDiv = document.getElementById('chunkInfoPosition');
 	infoIDDiv = document.getElementById('chunkInfoID');
@@ -23,6 +23,7 @@ notesForChunks = {};
  * @type {number}
  */
 let currentChunk = undefined;
+let currentSearch = "";
 /**
  * Called when the Chunk Info Menu is opened
  */
@@ -38,19 +39,19 @@ function onChunkInfoMenuOpened() {
  */
 function onChunkInfoMenuClosed() {
 	if (currentChunk !== undefined) {
-		var btn = document.getElementById(currentChunk);
+		const btn = document.getElementById(currentChunk);
 		btn.style.borderWidth = '0px';
 		btn.className = "locked";
 		btn.innerText = "";
 	}
 
-	for (var i = 0; i < unlockedChunks.length; i++) {
-		var chunkID = unlockedChunks[i];
+	for (let i = 0; i < unlockedChunks.length; i++) {
+		const chunkID = unlockedChunks[i];
 		unlockChunk(chunkID);
 	}
 
-	for (var i = 0; i < potentialChunks.length; i++) {
-		var chunkID = potentialChunks[i];
+	for (let i = 0; i < potentialChunks.length; i++) {
+		const chunkID = potentialChunks[i];
 		addChunkAsPotential(chunkID);
 	}
 }
@@ -63,24 +64,15 @@ function selectChunk(id) {
 	console.log(`Selected Chunk ${id}`);
 	// Deselect old chunk
 	if (currentChunk !== undefined) {
-		if (unlockedChunks.indexOf(currentChunk) !== -1) {
-			unlockChunk(currentChunk);
-		}
-		else {
-			var btn = document.getElementById(currentChunk);
-			btn.className = "locked";
-			btn.style.borderWidth = '0px';
-			btn.innerText = "";
-		}
-
+		removeSelectionClass(currentChunk);
 	}
 
 	drawUnlockedBorders();
-
+	updateSearch(currentSearch);
 	//Select the new chunk
 	currentChunk = id;
 
-	var btn = document.getElementById(id);
+	const btn = document.getElementById(id);
 	btn.style.borderWidth = "2px";
 	btn.innerText = "";
 	btn.className = "selected";
@@ -97,9 +89,62 @@ function selectChunk(id) {
 
 
 function onNoteChanged(newText) {
-	console.log(`Text Area Changed : ${newText}`);
 	if (currentChunk !== undefined) {
 		let chunkID = chunkIDs.getChunkIDFromSpriteIndex(currentChunk);
 		notesForChunks[chunkID] = newText;
+	}
+}
+
+function removeSelectionClass(id) {
+	if (unlockedChunks.indexOf(id) !== -1) {
+		unlockChunk(id);
+	}
+	else {
+		const btn = document.getElementById(id);
+		btn.className = "locked";
+		btn.style.borderWidth = '0px';
+		btn.innerText = "";
+	}
+}
+
+function updateSearch(newSearch) {
+	removeCurrentSearch();
+
+	currentSearch = newSearch;
+	loopThroughSearchedChunks((chunkID)=>{
+		const id = chunkIDs.getSpriteIndexFromChunkID(chunkID);
+		const btn = document.getElementById(id);
+		btn.style.borderWidth = "2px";
+		btn.innerText = "";
+		btn.className = "searchedChunk";
+		console.log("Search hit "+id);
+
+	});
+}
+
+function removeCurrentSearch() {
+	loopThroughSearchedChunks((chunkID)=>{
+		const id = chunkIDs.getSpriteIndexFromChunkID(chunkID);
+		removeSelectionClass(id);
+	});
+}
+
+
+/**
+ * Calls the given function for each matching chunk
+ * @param func (id : number)=>void
+ */
+function loopThroughSearchedChunks(func) {
+	if (currentSearch == "") {
+		return;
+	}
+
+	for (const p in notesForChunks) {
+		if (notesForChunks.hasOwnProperty(p)) {
+			const note = notesForChunks[p];
+			if (new RegExp(currentSearch.toLowerCase()).test(note.toLowerCase())){
+				func(Number(p));
+			}
+		}
 	}
 }

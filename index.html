@@ -28,9 +28,12 @@
 			<br>
 			<div id="notesParent" class="notesParent">
 				<div><strong>Chunk Notes</strong></div>
-				<textarea id="notesTextBox" type="text" class="notesTextBox" onchange="onNoteChanged(this.value)"></textarea>
+				<textarea id="notesTextBox" type="text" class="notesTextBox" oninput="onNoteChanged(this.value)"></textarea>
 			</div>
-
+			<div id="searchParent" class="searchParent">
+				<div><strong>Search</strong></div>
+				<input id="searchTextBox" type="text" class="searchField" oninput="updateSearch(this.value)"></input>
+			</div>
 		</div>
 	</div>
 </div>
