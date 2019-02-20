@@ -3,6 +3,7 @@ var cols = 43;
 var dragging = false;
 var unlockedChunks = [];
 var potentialChunks = [];
+var borderWidth = " 2px";
 
 
 $(document).ready(function () {
@@ -23,7 +24,7 @@ $(document).ready(function () {
  */
 function chunkClicked(id) {
 	if (dragging == true) {
-		// Prevent clicking when dragging the map
+		// Reset dragging flag, but don't click
 		dragging = false;
 	}
 	else {
@@ -54,26 +55,25 @@ function buildArray(rows, columns) {
 	}
 }
 
-// Counter for numbering potential chunks
+// Toggle chunk type on click
 function toggleChunkButton(id) {
-
 	var btn = document.getElementById(id);
 	if (btn.className == "locked") {
 		addChunkAsPotential(id);
 	}
 	else if (btn.className == "potential") {
-		unlockChunk(id);
+		addChunkAsUnlocked(id);
 	}
 	else if (btn.className == "unlocked") {
-		lockChunk(id);
+		addChunkAsLocked(id);
 	}
-
 }
 
 function addChunkAsPotential(id) {
 	var btn = document.getElementById(id);
 
-	unlockedChunks = removeElementFromArray(unlockedChunks, id);
+	// Redundant (?)
+	// unlockedChunks = removeElementFromArray(unlockedChunks, id);
 	if (potentialChunks.indexOf(id) === -1) {
 		potentialChunks.push(id);
 	}
@@ -82,7 +82,7 @@ function addChunkAsPotential(id) {
 	btn.className = "potential";
 }
 
-function unlockChunk(id) {
+function addChunkAsUnlocked(id) {
 	var btn = document.getElementById(id);
 	btn.innerText = "";
 	btn.className = "unlocked";
@@ -95,36 +95,36 @@ function unlockChunk(id) {
 	drawUnlockedBorders();
 }
 
-function lockChunk(id) {
+function addChunkAsLocked(id) {
 	var btn = document.getElementById(id);
 	btn.className = "locked";
 	btn.innerText = "";
 
-
 	unlockedChunks = removeElementFromArray(unlockedChunks, id);
 	potentialChunks = removeElementFromArray(potentialChunks, id);
 
+	// This chunk is no longer unlocked, update borders
 	drawUnlockedBorders();
 }
 
+// Randomly roll one of the potential (numbered) chunks
 function pickPotentialChunk() {
 	var chunks = document.getElementsByClassName("potential");
 	if (chunks.length == 0) return;
 
 	removeUnlockedTileNumbers();
 
-	// Randomly pick one of the numbered tiles
+	// Pick a random index
 	var randomIndex = Math.floor(Math.random() * chunks.length);
 	for (var i = chunks.length - 1; i >= 0; i--) {
 		if (i == randomIndex) {
 			var chunk = chunks[i];
 			chunk.className = "between";
+			// Wait 1 second for "between" animation to finish
 			setTimeout(function () {
-				var chunks = document.getElementsByClassName("between");
-				let pickedChunk = chunks[0];
-				const savedText = pickedChunk.innerText;
-				unlockChunk(pickedChunk.id);
-				pickedChunk.innerText = savedText;
+				const savedText = chunk.innerText;
+				addChunkAsUnlocked(chunk.id);
+				chunk.innerText = savedText;
 			}, 1000);
 		}
 		else {
@@ -177,11 +177,11 @@ function makeBorders(id) {
 				borderString = borderString + " 0px";
 			}
 			else {
-				borderString = borderString + " 2px";
+				borderString = borderString + borderWidth;
 			}
 		}
 		else {
-			borderString = borderString + " 2px";
+			borderString = borderString + borderWidth;
 		}
 	}
 
@@ -196,6 +196,7 @@ function removeUnlockedTileNumbers() {
 	}
 }
 
+// Draw borders around all unlocked chunks
 function drawUnlockedBorders() {
 	for (var i = 0; i < unlockedChunks.length; i++) {
 		makeBorders(unlockedChunks[i]);

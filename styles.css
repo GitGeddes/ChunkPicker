@@ -7,7 +7,6 @@
 	z-index: 4;
 	pointer-events: none;
 }
-
 .picker {
 	position: relative;
 	top: 3%;
@@ -26,16 +25,13 @@
 	background-color: rgb(71, 177, 0);
 	box-shadow: 0 6px rgb(150, 150, 150);
 }
-
 button.picker:hover {
 	background-color: rgb(61, 153, 0);
 }
-
 button.picker:active {
 	box-shadow: 0 3px rgb(100, 100, 100);
 	transform: translateY(3px);
 }
-
 button.picker:focus {
 	outline: 0;
 }
@@ -50,13 +46,11 @@ button.picker:focus {
 	height: 98%;
 	background-color: rgb(98, 119, 166);
 }
-
 .imgDiv {
 	position: absolute;
 	overflow: hidden;
 	width: 5000px;
 }
-
 .overlay {
 	position: absolute;
 	top: 0;
@@ -64,7 +58,6 @@ button.picker:focus {
 	z-index: 2;
 	width: 100%;
 }
-
 .map {
 	float: left;
 	z-index: 1;
@@ -85,7 +78,6 @@ button.picker:focus {
 	width: 100%;
 	height: 100%;
 }
-
 .locked {
 	color: transparent;
 	background-color: rgba(0, 0, 0, 0.45);
@@ -96,11 +88,9 @@ button.picker:focus {
 	cursor: pointer;
 	z-index: 3;
 }
-
 div.locked:hover {
 	background-color: rgba(12, 184, 46, 0.2);
 }
-
 .unlocked {
 	border-color: red;
 	border-style: solid;
@@ -121,11 +111,9 @@ div.locked:hover {
 	-1px 1px 0 black,
 	1px 1px 0 black;
 }
-
 div.unlocked:hover {
 	background-color: rgba(10, 10, 10, 0.2);
 }
-
 .potential {
 	display: table-cell;
 	background-color: rgba(12, 184, 46, 0.4);
@@ -145,11 +133,23 @@ div.unlocked:hover {
 	-1px 1px 0 black,
 	1px 1px 0 black;
 }
-
 div.potential:hover {
 	background-color: rgba(200, 200, 200, 0.25);
 }
+.between {
+	background-color: transparent;
+	transition: background 1s ease-in;
 
+	text-align: center;
+	font-size: 50pt;
+	padding: 15%;
+	color: rgb(255, 230, 0);
+
+	text-shadow: -1px -1px 0 black,
+	1px -1px 0 black,
+	-1px 1px 0 black,
+	1px 1px 0 black;
+}
 .selected {
 	border-color: yellow;
 	border-style: solid;
@@ -170,11 +170,9 @@ div.potential:hover {
 	-1px 1px 0 black,
 	1px 1px 0 black;
 }
-
 div.selected:hover {
 	background-color: rgba(10, 10, 10, 0.2);
 }
-
 .searchedChunk {
 	border-color: orange;
 	border-style: solid;
@@ -195,32 +193,14 @@ div.selected:hover {
 	-1px 1px 0 black,
 	1px 1px 0 black;
 }
-
 .searchedChunk.unlocked {
 	color: rgb(255, 230, 0);
 }
-
 .searchedChunk.locked {
 	background-color: rgba(0, 0, 0, 0.45);
 }
-
 div.searchedChunk:hover {
 	background-color: rgba(10, 10, 10, 0.2);
-}
-
-.between {
-	background-color: transparent;
-	transition: background 1s ease-in;
-
-	text-align: center;
-	font-size: 50pt;
-	padding: 15%;
-	color: rgb(255, 230, 0);
-
-	text-shadow: -1px -1px 0 black,
-	1px -1px 0 black,
-	-1px 1px 0 black,
-	1px 1px 0 black;
 }
 
 .disclaimer {
@@ -238,28 +218,25 @@ div.searchedChunk:hover {
 	color: black;
 	text-align: center;
 }
-
 p {
 	margin: 0;
 }
 
 .menuBackground {
-	right: 0%;
+	right: 0.5%;
 	width: 20%;
 	background: #FFFFFF;
 	display: grid;
 
 	position: absolute;
-	height: 100%;
+	height: 99%;
 	z-index: 4;
 }
-
 .menuParent {
 	position: relative;
 	display: none;
 	top: 60px;
 }
-
 .menuSelector {
 	display: block;
 	position: absolute;
@@ -269,7 +246,6 @@ p {
 	width: 200px;
 	z-index: 10;
 }
-
 input[type=text] {
 	padding: 0;
 	height: 30px;
@@ -281,38 +257,23 @@ input[type=text] {
 	background-color: white;
 	font-size: 16px;
 }
-
 .notesTextBox {
-	width: 100%;
+	width: 98%;
 	height: 100%;
 }
-
 .notesParent {
 	position: relative;
 	top: 20px;
 	width: 100%;
 	height: 200px;
 }
-
 .searchParent {
 	position: relative;
 	top: 20px;
 	width: 100%;
 	height: 200px;
 }
-
 .searchField {
 	width: 100%;
 	height: 100%;
-}
-
-.button {
-	background-color: #4CAF50; /* Green */
-	border: none;
-	color: white;
-	padding: 15px 32px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
 }

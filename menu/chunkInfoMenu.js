@@ -47,7 +47,7 @@ function onChunkInfoMenuClosed() {
 
 	for (let i = 0; i < unlockedChunks.length; i++) {
 		const chunkID = unlockedChunks[i];
-		unlockChunk(chunkID);
+		addChunkAsUnlocked(chunkID);
 	}
 
 	for (let i = 0; i < potentialChunks.length; i++) {
@@ -97,7 +97,7 @@ function onNoteChanged(newText) {
 
 function removeSelectionClass(id) {
 	if (unlockedChunks.indexOf(id) !== -1) {
-		unlockChunk(id);
+		addChunkAsUnlocked(id);
 	}
 	else {
 		const btn = document.getElementById(id);
