@@ -83,6 +83,7 @@ function addChunkAsPotential(id) {
 }
 
 function addChunkAsUnlocked(id) {
+	id = Number(id);
 	var btn = document.getElementById(id);
 	btn.innerText = "";
 	btn.className = "unlocked";

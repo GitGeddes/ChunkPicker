@@ -5,7 +5,7 @@
  * Called when the Chunk Info Menu is opened
  */
 function onImportMenuOpened() {
-	
+
 }
 
 /**
