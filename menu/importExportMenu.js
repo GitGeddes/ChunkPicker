@@ -5,10 +5,7 @@
  * Called when the Chunk Info Menu is opened
  */
 function onImportMenuOpened() {
-	onChunkPicked = selectChunk;
-	if (currentChunk !== undefined) {
-		selectChunk(currentChunk);
-	}
+	
 }
 
 /**
