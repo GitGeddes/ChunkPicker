@@ -48,7 +48,7 @@ const chunkIDs = {
 	 * @returns spriteIndex {number}
 	 */
 	getSpriteIndexFromPosition: function (pos) {
-		return (pos.x * cols) + pos.y;
+		return (pos.y * cols) + pos.x;
 	},
 	/**
 	 * @param spriteIndex {number}
@@ -88,6 +88,21 @@ window['drawChunkIDs'] = ()=>{
 		chunk.style.color = "0xFFFFFF";
 		chunk.style.fontSize = "10pt";
 		let id = chunk.id;
-		chunk.innerHTML=`${id}<br>${JSON.stringify(chunkIDs.getPositionFromSpriteIndex(id))}<br>${chunkIDs.getChunkIDFromSpriteIndex(id)}`;
+		let chunkIDFromSpriteIndex = chunkIDs.getChunkIDFromSpriteIndex(id);
+		chunk.innerHTML=`${id}<br>${JSON.stringify(chunkIDs.getPositionFromSpriteIndex(id))}<br>${chunkIDFromSpriteIndex}`;
+	}
+};
+
+window['testConversion'] = ()=>{
+	const lockedChunks = document.getElementsByClassName('locked');
+	for (var i = 0; i < lockedChunks.length; i++) {
+		var chunk = lockedChunks[i];
+		chunk.className = "potential";
+		chunk.style.color = "0xFFFFFF";
+		chunk.style.fontSize = "10pt";
+		let id = chunk.id;
+		let chunkIDFromSpriteIndex = chunkIDs.getChunkIDFromSpriteIndex(id);
+		chunk.innerHTML=`${id}<br>${JSON.stringify(chunkIDs.getPositionFromSpriteIndex(id))}<br>${chunkIDFromSpriteIndex}`;
+		chunk.innerHTML+=`<br>${JSON.stringify(chunkIDs.getPositionFromChunkID(chunkIDFromSpriteIndex))}<br>${chunkIDs.getSpriteIndexFromChunkID(chunkIDFromSpriteIndex)}`;
 	}
 };
