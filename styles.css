@@ -39,17 +39,17 @@ button.picker:focus {
 .completeDiv {
 	position: absolute;
 	overflow: hidden;
-	top: 1%;
-	left: 1%;
+	top: 0%;
+	left: 0%;
 	outline: 2px solid black;
-	width: 98%;
-	height: 98%;
+	width: 100%;
+	height: 100%;
 	background-color: rgb(98, 119, 166);
 }
 .imgDiv {
 	position: absolute;
 	overflow: hidden;
-	width: 5000px;
+	width: 4128px;
 }
 .overlay {
 	position: absolute;

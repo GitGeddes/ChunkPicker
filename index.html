@@ -12,61 +12,61 @@
 </head>
 
 <body>
-<div class="menuBackground" id="menuTopParent">
-	<div id="subMenuParents">
-		<div class="menuParent" id="UNLOCKER">
-			<div class="controls" id="controls">
-				<button class="picker" onclick="pickPotentialChunk()">Pick a random potential chunk!</button>
+	<div class="menuBackground" id="menuTopParent">
+		<div id="subMenuParents">
+			<div class="menuParent" id="UNLOCKER">
+				<div class="controls" id="controls">
+					<button class="picker" onclick="pickPotentialChunk()">Pick a random potential chunk!</button>
+				</div>
 			</div>
-		</div>
 
-		<div class="menuParent" id="CHUNKINFO">
-			<div>
-				<div><strong>Selected Chunk</strong></div>
-				<div id="chunkInfoPosition">Chunk Position</div>
-				<div id="chunkInfoID">Chunk ID</div>
+			<div class="menuParent" id="CHUNKINFO">
+				<div>
+					<div><strong>Selected Chunk</strong></div>
+					<div id="chunkInfoPosition">Chunk Position</div>
+					<div id="chunkInfoID">Chunk ID</div>
+				</div>
+				<br>
+				<div id="notesParent" class="notesParent">
+					<div><strong>Chunk Notes</strong></div>
+					<textarea id="notesTextBox" type="text" class="notesTextBox" oninput="onNoteChanged(this.value)"></textarea>
+				</div>
+				<div id="searchParent" class="searchParent">
+					<div><strong>Search</strong></div>
+					<input id="searchTextBox" type="text" class="searchField" oninput="updateSearch(this.value)"></input>
+				</div>
 			</div>
-			<br>
-			<div id="notesParent" class="notesParent">
-				<div><strong>Chunk Notes</strong></div>
-				<textarea id="notesTextBox" type="text" class="notesTextBox" oninput="onNoteChanged(this.value)"></textarea>
-			</div>
-			<div id="searchParent" class="searchParent">
-				<div><strong>Search</strong></div>
-				<input id="searchTextBox" type="text" class="searchField" oninput="updateSearch(this.value)"></input>
+			<div class="menuParent" id="IMPORTEXPORT">
+				<button style="background-color: cadetblue;" id="exportButton" onclick="createExportJson()">Export</button>
+				<a id="downloadAnchorElem" style="display:none"></a>
+				<br>
+				<br>
+				<button style="background-color: coral;" id="importButton" onclick="importButtonClicked()">Import</button>
+				<br>
+				<br>
+				<button style="background-color: coral;" id="mergeButton" onclick="mergeButtonClicked()">Merge Notes (Import) </button>
+				<br>
+				<br>
+				<input style="visibility:hidden; width:10%;" type="file" accept=".json" id="importFileSelector" oninput="onSaveFileImported()">
 			</div>
 		</div>
-		<div class="menuParent" id="IMPORTEXPORT">
-			<button style="background-color: cadetblue;" id="exportButton" onclick="createExportJson()">Export</button>
-			<a id="downloadAnchorElem" style="display:none"></a>
-			<br>
-			<br>
-			<button style="background-color: coral;" id="importButton" onclick="importButtonClicked()">Import</button>
-			<br>
-			<br>
-			<button style="background-color: coral;" id="mergeButton" onclick="mergeButtonClicked()">Merge Notes (Import) </button>
-			<br>
-			<br>
-			<input style="visibility:hidden; width:10%;" type="file" accept=".json" id="importFileSelector" oninput="onSaveFileImported()">
+	</div>
+	<select id="menuSelector" class="menuSelector" onchange="openMenu(this[this.selectedIndex].value);">
+		<option value="NONE">Menu</option>
+		<option value="UNLOCKER">Chunk Unlocker</option>
+		<option value="CHUNKINFO">Chunk Info</option>
+		<option value="IMPORTEXPORT">Import / Export</option>
+	</select>
+	<div class="completeDiv" id="superParent">
+		<div class="imgDiv" id="imgDiv">
+			<img class="overlay" id="overlay" src="grid overlay.png">
+			<img class="map" id="map" src="osrs_world_map_jan4_2019.png">
+			<div class="btnDiv" id="btnDiv"></div>
 		</div>
 	</div>
-</div>
-<select id="menuSelector" class="menuSelector" onchange="openMenu(this[this.selectedIndex].value);">
-	<option value="NONE">Menu</option>
-	<option value="UNLOCKER">Chunk Unlocker</option>
-	<option value="CHUNKINFO">Chunk Info</option>
-	<option value="IMPORTEXPORT">Import / Export</option>
-</select>
-<div class="completeDiv" id="superParent">
-	<div class="imgDiv" id="imgDiv">
-		<img class="overlay" id="overlay" src="grid overlay.png">
-		<img class="map" id="map" src="osrs_world_map_jan4_2019.png">
-		<div class="btnDiv" id="btnDiv"></div>
+	<div class="disclaimer">
+		<p>The Old School RuneScape world map is copyright © Jagex Games Ltd.</p>
+		<p>This website is not affiliated with Jagex Games Ltd.</p>
 	</div>
-</div>
-<div class="disclaimer">
-	<p>The Old School RuneScape world map is copyright © Jagex Games Ltd.</p>
-	<p>This website is not affiliated with Jagex Games Ltd.</p>
-</div>
 </body>
 </html>
