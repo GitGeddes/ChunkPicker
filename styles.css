@@ -1,174 +1,171 @@
 .controls {
-    position: absolute;
-    top: 1%;
-    left: 1%;
-    width: 98%;
-    height: 98%;
-    z-index: 4;
-    pointer-events: none;
+	position: absolute;
+	top: 1%;
+	left: 1%;
+	width: 98%;
+	height: 98%;
+	z-index: 4;
+	pointer-events: none;
 }
 .picker {
-    position: relative;
-    top: 3%;
-    left: 50%;
-    width: 200px;
-    height: 60px;
-    margin: -150px -125px;
-    font-size: 1.2em;
-    color: black;
+	position: relative;
+	top: 3%;
+	left: 51%;
+	width: 200px;
+	height: 60px;
+	margin: -150px -125px;
+	font-size: 1.2em;
+	color: black;
 
-    cursor: pointer;
-    pointer-events: auto;
+	cursor: pointer;
+	pointer-events: auto;
 
-    border: none;
-    border-radius: 15px;
-    background-color: rgb(71, 177, 0);
-    box-shadow: 0 6px rgb(150, 150, 150);
+	border: none;
+	border-radius: 15px;
+	background-color: rgb(71, 177, 0);
+	box-shadow: 0 6px rgb(150, 150, 150);
 }
 button.picker:hover {
-    background-color: rgb(61, 153, 0);
+	background-color: rgb(61, 153, 0);
 }
 button.picker:active {
-    box-shadow: 0 3px rgb(100, 100, 100);
-    transform: translateY(3px);
+	box-shadow: 0 3px rgb(100, 100, 100);
+	transform: translateY(3px);
 }
 button.picker:focus {
-    outline: 0;
+	outline: 0;
 }
 
 .completeDiv {
-    position: absolute;
-    overflow: hidden;
-    top: 1%;
-    left: 1%;
-    outline: 2px solid black;
-    width: 98%;
-    height: 98%;
-    background-color: rgb(98, 119, 166);
+	position: absolute;
+	overflow: hidden;
+	top: 0%;
+	left: 0%;
+	outline: 2px solid black;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(98, 119, 166);
 }
 .imgDiv {
-    position: absolute;
-    overflow: hidden;
-    width: 5000px;
+	position: absolute;
+	overflow: hidden;
+	width: 4128px;
 }
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	width: 100%;
 }
 .map {
-    float: left;
-    z-index: 1;
-    width: 100%;
+	float: left;
+	z-index: 1;
+	width: 100%;
 }
 
 .btnDiv {
-    position: absolute;
-    top: 0;
-    left: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
 
-    display: grid;
-    grid-gap: 0px;
-    grid-template-columns: repeat(43, 2.3256% [col-start]);
-    grid-template-rows: repeat(25, 4% [row-start]);
+	display: grid;
+	grid-gap: 0px;
+	grid-template-columns: repeat(43, 2.3256% [col-start]);
+	grid-template-rows: repeat(25, 4% [row-start]);
 
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
 }
 .locked {
-    color: transparent;
-    background-color: rgba(0, 0, 0, 0.45);
-    border-color: transparent;
-    outline: 0;
-    border: 0px;
-    padding: 0px;
-    cursor: pointer;
-    z-index: 3;
+	color: transparent;
+	background-color: rgba(0, 0, 0, 0.45);
+	border-color: transparent;
+	outline: 0;
+	border: 0px;
+	padding: 0px;
+	cursor: pointer;
+	z-index: 3;
 }
 div.locked:hover {
-    background-color: rgba(12, 184, 46, 0.2);
+	background-color: rgba(12, 184, 46, 0.2);
 }
 .unlocked {
-    border-color: red;
-    border-style: solid;
-    border-width: 0px;
-    outline: 0;
-    padding: 0px;
-    cursor: pointer;
-    z-index: 3;
+	border-color: red;
+	border-style: solid;
+	border-width: 0px;
+	outline: 0;
+	padding: 0px;
+	cursor: pointer;
+	z-index: 3;
 
-    text-align: center;
-    font-size: 50pt;
-    padding: 15%;
-    color: rgb(255, 230, 0);
-    transition: color 1s ease-in;
+	text-align: center;
+	font-size: 50pt;
+	padding: 10%;
+	color: rgb(255, 230, 0);
+	transition: color 1s ease-in;
 
-    text-shadow:
-        -1px -1px 0 black,
-        1px -1px 0 black,
-        -1px 1px 0 black,
-        1px 1px 0 black;
+	text-shadow: -1px -1px 0 black,
+	1px -1px 0 black,
+	-1px 1px 0 black,
+	1px 1px 0 black;
 }
 div.unlocked:hover {
-    background-color: rgba(10, 10, 10, 0.2);
+	background-color: rgba(10, 10, 10, 0.2);
 }
 .potential {
-    display: table-cell;
-    background-color: rgba(12, 184, 46, 0.4);
-    border-color: transparent;
-    outline: 0;
-    border: 0px;
-    cursor: pointer;
-    z-index: 3;
+	display: table-cell;
+	background-color: rgba(12, 184, 46, 0.4);
+	border-color: transparent;
+	outline: 0;
+	border: 0px;
+	cursor: pointer;
+	z-index: 3;
 
-    text-align: center;
-    font-size: 50pt;
-    padding: 15%;
-    color: rgb(255, 230, 0);
+	text-align: center;
+	font-size: 50pt;
+	padding: 10%;
+	color: rgb(255, 230, 0);
 
-    text-shadow:
-        -1px -1px 0 black,
-        1px -1px 0 black,
-        -1px 1px 0 black,
-        1px 1px 0 black;
+	text-shadow: -1px -1px 0 black,
+	1px -1px 0 black,
+	-1px 1px 0 black,
+	1px 1px 0 black;
 }
 div.potential:hover {
-    background-color: rgba(200, 200, 200, 0.25);
+	background-color: rgba(200, 200, 200, 0.25);
 }
 .between {
-    background-color: transparent;
-    transition: background 1s ease-in;
+	background-color: transparent;
+	transition: background 1s ease-in;
 
-    text-align: center;
-    font-size: 50pt;
-    padding: 15%;
-    color: rgb(255, 230, 0);
+	text-align: center;
+	font-size: 50pt;
+	padding: 10%;
+	color: rgb(255, 230, 0);
 
-    text-shadow:
-        -1px -1px 0 black,
-        1px -1px 0 black,
-        -1px 1px 0 black,
-        1px 1px 0 black;
+	text-shadow: -1px -1px 0 black,
+	1px -1px 0 black,
+	-1px 1px 0 black,
+	1px 1px 0 black;
 }
 
 .disclaimer {
-    position: absolute;
-    bottom: 1%;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    width: 550px;
-    align-items: center;
-    z-index: 4;
+	position: absolute;
+	bottom: 1%;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	width: 550px;
+	align-items: center;
+	z-index: 4;
 
-    background-image: linear-gradient(rgba(75, 75, 75, 0.75), rgba(150, 150, 150, 0.75));
+	background-image: linear-gradient(rgba(75, 75, 75, 0.75), rgba(150, 150, 150, 0.75));
 
-    font-size: 14pt;
-    color: black;
-    text-align: center;
+	font-size: 14pt;
+	color: black;
+	text-align: center;
 }
 p {
-    margin: 0;
+	margin: 0;
 }
