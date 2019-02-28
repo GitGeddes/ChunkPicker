@@ -65,13 +65,18 @@ function toggleSidebar(id, side) {
         else if (side == "sidebarRight") {
             sideDiv.style.right = (-sideDiv.offsetWidth) + "px";
         }
+        // Wait until the sidebar is off-screen to make it invisible
+        // Then fix the map if it is now out of bounds
         setTimeout(() => {
             sideDiv.style.display = "none";
-        }, 500);
+            fixMapEdges(document.getElementById("imgDiv"));
+        }, 750);
     }
     // Slide the sidebar back on the screen
     else {
         sideDiv.style.display = "block";
+        // Wait a small amount before starting the animation because
+        // Firefox sometimes doesn't show the animation
         setTimeout(() => {
             if (side == "sidebarLeft") {
                 sideDiv.style.left = "0%";
@@ -82,32 +87,32 @@ function toggleSidebar(id, side) {
         }, 15);
     }
 
+    var arrowBackground = document.getElementById(id + "Background");
     var arrow = document.getElementById(id);
     // Slide and rotate the arrow to the edge of the screen
     if (id == "arrowLeft") {
         // Custom left value hasn't been set yet, so initialize it
-        if (arrow.style.left == "") arrow.style.left = "13.5%";
+        if (arrowBackground.style.left == "") arrowBackground.style.left = "13.5%";
 
-        if (arrow.style.left == "13.5%") {
-            arrow.style.left = "-0.25%";
+        if (arrowBackground.style.left == "13.5%") {
+            arrowBackground.style.left = "-0.5%";
             arrow.style.transform = "rotate(180deg)";
-            arrow.style.borderRadius = ""
         }
-        else if (arrow.style.left == "-0.25%") {
-            arrow.style.left = "13.5%";
+        else if (arrowBackground.style.left == "-0.5%") {
+            arrowBackground.style.left = "13.5%";
             arrow.style.transform = "rotate(0deg)";
         }
     }
     else if (id == "arrowRight") {
         // Custom right value hasn't been set yet, so initialize it
-        if (arrow.style.right == "") arrow.style.right = "13.5%";
+        if (arrowBackground.style.right == "") arrowBackground.style.right = "13.5%";
 
-        if (arrow.style.right == "13.5%") {
-            arrow.style.right = "-0.25%";
+        if (arrowBackground.style.right == "13.5%") {
+            arrowBackground.style.right = "-0.5%";
             arrow.style.transform = "rotate(-180deg)";
         }
-        else if (arrow.style.right == "-0.25%") {
-            arrow.style.right = "13.5%";
+        else if (arrowBackground.style.right == "-0.5%") {
+            arrowBackground.style.right = "13.5%";
             arrow.style.transform = "rotate(0deg)";
         }
     }

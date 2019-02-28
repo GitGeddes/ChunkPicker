@@ -25,13 +25,26 @@
 					<button class="picker" onclick="pickPotentialChunk()">Pick a random potential chunk!</button>
 					<button class="picker" onclick="centerOnUnlockedTiles()">Center on unlocked tiles</button>
 				</div>
+				<div class="importExport" id="importExport">
+					<h2 style="margin: 0px">Import/Export</h2>
+				</div>
 			</div>
-			<div class="arrowLeft" id="arrowLeft" onclick="toggleSidebar(this.id, 'sidebarLeft')">
+			<div class="arrowLeftBackground" id="arrowLeftBackground">
+				<div class="arrowLeft" id="arrowLeft" onclick="toggleSidebar(this.id, 'sidebarLeft')">			
+				</div>
 			</div>
 	
 			<div class="sidebarRight" id="sidebarRight">
+				<div class="chunkInfo" id="chunkInfo">
+					<h2 style="margin: 0px">Chunk Info</h2>
+				</div>
+				<div class="aboutBox" id="aboutBox">
+					<h2 style="margin: 0px">About</h2>
+				</div>
 			</div>
-			<div class="arrowRight" id="arrowRight" onclick="toggleSidebar(this.id, 'sidebarRight')">
+			<div class="arrowRightBackground" id="arrowRightBackground">
+				<div class="arrowRight" id="arrowRight" onclick="toggleSidebar(this.id, 'sidebarRight')">			
+				</div>
 			</div>
 		</div>
 		<div class="disclaimer">

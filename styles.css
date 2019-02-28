@@ -18,12 +18,10 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: 2;
 	width: 100%;
 }
 .map {
 	float: left;
-	z-index: 1;
 	width: 100%;
 }
 /* End container divs and images */
@@ -51,7 +49,6 @@
 	border: 0px;
 	padding: 0px;
 	cursor: pointer;
-	z-index: 3;
 }
 div.locked:hover {
 	background-color: rgba(12, 184, 46, 0.2);
@@ -63,7 +60,6 @@ div.locked:hover {
 	outline: 0;
 	padding: 0px;
 	cursor: pointer;
-	z-index: 3;
 
 	text-align: center;
 	font-size: 50pt;
@@ -71,7 +67,8 @@ div.locked:hover {
 	color: rgb(255, 230, 0);
 	transition: color 1s ease-in;
 
-	text-shadow: -1px -1px 0 black,
+	text-shadow:
+		-1px -1px 0 black,
 		1px -1px 0 black,
 		-1px 1px 0 black,
 		1px 1px 0 black;
@@ -86,14 +83,14 @@ div.unlocked:hover {
 	outline: 0;
 	border: 0px;
 	cursor: pointer;
-	z-index: 3;
 
 	text-align: center;
 	font-size: 50pt;
 	padding: 10%;
 	color: rgb(255, 230, 0);
 
-	text-shadow: -1px -1px 0 black,
+	text-shadow:
+		-1px -1px 0 black,
 		1px -1px 0 black,
 		-1px 1px 0 black,
 		1px 1px 0 black;
@@ -110,7 +107,8 @@ div.potential:hover {
 	padding: 10%;
 	color: rgb(255, 230, 0);
 
-	text-shadow: -1px -1px 0 black,
+	text-shadow:
+		-1px -1px 0 black,
 		1px -1px 0 black,
 		-1px 1px 0 black,
 		1px 1px 0 black;
@@ -128,7 +126,7 @@ div.potential:hover {
 	background-color: white;
 
 	display: block;
-	transition: left 0.5s ease-in-out;
+	transition: left 0.75s ease-in-out;
 }
 .sidebarRight {
 	position: absolute;
@@ -140,15 +138,13 @@ div.potential:hover {
 	background-color: white;
 
 	display: block;
-	transition: right 0.5s ease-in-out;
+	transition: right 0.75s ease-in-out;
 }
 /* End sidebars*/
 
 /* Map controls */
 .controls {
-	position: absolute;
-	top: 0%;
-	left: 0%;
+	position: relative;
 	width: 100%;
 	height: 50%;
 	text-align: center;
@@ -184,9 +180,34 @@ button.picker:focus {
 }
 /* End map controls */
 
-/* Info box */
-.infoBox {
-	z-index: inherit;
+/* Import/Export menu */
+.importExport {
+	position: relative;
+	width: 100%;
+	height: 50%;
+	text-align: center;
+	line-height: 80px;
+}
+/* End import/export menu */
+
+/* Chunk info */
+.chunkInfo {
+	position: relative;
+	width: 100%;
+	height: 50%;
+	text-align: center;
+	line-height: 80px;
+	border-bottom: 2px solid black
+}
+/* End chunk info */
+
+/* About box */
+.aboutBox {
+	position: relative;
+	width: 100%;
+	height: 50%;
+	text-align: center;
+	line-height: 80px;
 }
 .disclaimer {
 	position: absolute;
@@ -207,9 +228,9 @@ button.picker:focus {
 
 /* Sidebar minimizing arrows */
 .arrowLeft {
-	position: absolute;
-	top: 2%;
-	left: 13.5%;
+	position: relative;
+	top: 3px;
+	left: 5px;
 	width: 0;
 	height: 0;
 	z-index: 5;
@@ -219,17 +240,26 @@ button.picker:focus {
 	border-bottom: 20px solid transparent;
 	border-right: 35px solid rgb(71, 177, 0);;
 	border-radius: 15px;
-
-	transition: left 0.5s ease-in-out,
-		transform 0.5s ease-in-out;
+	transition: transform 0.75s ease-in-out;
 }
 .arrowLeft:hover {
 	border-right: 35px solid rgb(53, 133, 0);
 }
-.arrowRight {
-	position: absolute;
+.arrowLeftBackground {
+	position: relative;
 	top: 2%;
-	right: 13.5%;
+	left: 13.5%;
+	width: 43px;
+	height: 45px;
+	background-color: white;
+	border-radius: 10px;
+
+	transition: left 0.75s ease-in-out;
+}
+.arrowRight {
+	position: relative;
+	top: 3px;
+	right: -3px;
 	width: 0;
 	height: 0;
 	z-index: 5;
@@ -239,10 +269,20 @@ button.picker:focus {
 	border-bottom: 20px solid transparent;
 	border-left: 35px solid rgb(71, 177, 0);
 	border-radius: 15px;
-
-	transition: right 0.5s ease-in-out, transform 0.5s ease-in-out
+	transition: transform 0.75s ease-in-out;
 }
 .arrowRight:hover {
 	border-left: 35px solid rgb(53, 133, 0);
+}
+.arrowRightBackground {
+	position: absolute;
+	top: 2%;
+	right: 13.5%;
+	width: 43px;
+	height: 45px;
+	background-color: white;
+	border-radius: 10px;
+
+	transition: right 0.75s ease-in-out;
 }
 /* End sidebar minimizing arrows */
