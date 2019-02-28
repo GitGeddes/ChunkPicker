@@ -79,7 +79,7 @@ function toggleSidebar(id, side) {
             else if (side == "sidebarRight") {
                 sideDiv.style.right = "0%";
             }
-        }, 1);
+        }, 15);
     }
 
     var arrow = document.getElementById(id);
@@ -89,10 +89,11 @@ function toggleSidebar(id, side) {
         if (arrow.style.left == "") arrow.style.left = "13.5%";
 
         if (arrow.style.left == "13.5%") {
-            arrow.style.left = "-0.5%";
+            arrow.style.left = "-0.25%";
             arrow.style.transform = "rotate(180deg)";
+            arrow.style.borderRadius = ""
         }
-        else if (arrow.style.left == "-0.5%") {
+        else if (arrow.style.left == "-0.25%") {
             arrow.style.left = "13.5%";
             arrow.style.transform = "rotate(0deg)";
         }
@@ -102,10 +103,10 @@ function toggleSidebar(id, side) {
         if (arrow.style.right == "") arrow.style.right = "13.5%";
 
         if (arrow.style.right == "13.5%") {
-            arrow.style.right = "-0.5%";
+            arrow.style.right = "-0.25%";
             arrow.style.transform = "rotate(-180deg)";
         }
-        else if (arrow.style.right == "-0.5%") {
+        else if (arrow.style.right == "-0.25%") {
             arrow.style.right = "13.5%";
             arrow.style.transform = "rotate(0deg)";
         }
