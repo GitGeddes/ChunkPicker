@@ -12,7 +12,7 @@ function pickPotentialChunk() {
 			var chunk = chunks[i];
 			chunk.className = "between";
 			// Wait 1 second for "between" animation to finish
-			setTimeout(function () {
+			setTimeout(() => {
 				var savedText = chunk.innerText;
 				addChunkAsUnlocked(chunk.id);
 				chunk.innerText = savedText;
@@ -90,6 +90,9 @@ function toggleSidebar(id, side) {
     var arrowBackground = document.getElementById(id + "Background");
     var arrow = document.getElementById(id);
     // Slide and rotate the arrow to the edge of the screen
+    setTimeout(() => {
+        
+    }, 15);
     if (id == "arrowLeft") {
         // Custom left value hasn't been set yet, so initialize it
         if (arrowBackground.style.left == "") arrowBackground.style.left = "13.5%";
@@ -99,8 +102,10 @@ function toggleSidebar(id, side) {
             arrow.style.transform = "rotate(180deg)";
         }
         else if (arrowBackground.style.left == "-0.5%") {
-            arrowBackground.style.left = "13.5%";
-            arrow.style.transform = "rotate(0deg)";
+            setTimeout(() => {
+                arrowBackground.style.left = "13.5%";
+                arrow.style.transform = "rotate(0deg)";
+            }, 15);
         }
     }
     else if (id == "arrowRight") {
@@ -112,8 +117,10 @@ function toggleSidebar(id, side) {
             arrow.style.transform = "rotate(-180deg)";
         }
         else if (arrowBackground.style.right == "-0.5%") {
-            arrowBackground.style.right = "13.5%";
-            arrow.style.transform = "rotate(0deg)";
+            setTimeout(() => {
+                arrowBackground.style.right = "13.5%";
+                arrow.style.transform = "rotate(0deg)";
+            }, 15);
         }
     }
 }
