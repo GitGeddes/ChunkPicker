@@ -154,6 +154,5 @@ function resizePotentialFont(dir) {
 	}
 	for (var i = 0; i < allChunks.length; i++) {
 		allChunks[i].style.fontSize = newFontSize + "pt";
-		// allChunks[i].style.fontSize = allChunks[i].offsetWidth * 0.8 + "px";
 	}
 }

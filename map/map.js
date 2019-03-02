@@ -28,18 +28,19 @@ function toggleChunkButton(id) {
 	else {
 		var btn = document.getElementById(id);
 		if (btn.className == "locked") {
-			addChunkAsPotential(Number(id));
+			addChunkAsPotential(id);
 		}
 		else if (btn.className == "potential") {
-			addChunkAsUnlocked(Number(id));
+			addChunkAsUnlocked(id);
 		}
 		else if (btn.className == "unlocked") {
-			addChunkAsLocked(Number(id));
+			addChunkAsLocked(id);
 		}
 	}
 }
 
 function addChunkAsPotential(id) {
+	id = Number(id); // For caution
 	var btn = document.getElementById(id);
 
 	if (potentialChunks.indexOf(id) == -1) {
@@ -54,8 +55,8 @@ function addChunkAsPotential(id) {
 function addChunkAsUnlocked(id) {
 	id = Number(id);
 	var btn = document.getElementById(id);
-	btn.innerText = "";
 	btn.className = "unlocked";
+	btn.innerText = "";
 
 	potentialChunks = removeElementFromArray(potentialChunks, id);
 	if (unlockedChunks.indexOf(id) == -1) {
@@ -67,10 +68,14 @@ function addChunkAsUnlocked(id) {
 }
 
 function addChunkAsLocked(id) {
+	id = Number(id);
 	var btn = document.getElementById(id);
 	btn.className = "locked";
 	btn.innerText = "";
 
+	// Remove from both arrays instead of just "unlockedChunks"
+	// This is needed because of the Import/Export function
+	potentialChunks = removeElementFromArray(potentialChunks, id);
 	unlockedChunks = removeElementFromArray(unlockedChunks, id);
 
 	// This chunk is no longer unlocked, update borders
