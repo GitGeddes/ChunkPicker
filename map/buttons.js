@@ -1,28 +1,40 @@
 // Randomly roll one of the potential (numbered) chunks
 function pickPotentialChunk() {
+    // Get checkbox values
+    var removePotential = document.getElementById("removePotential").checked;
+    var selectNewNeighbors = document.getElementById("selectNewNeighbors").checked;
 	var chunks = document.getElementsByClassName("potential");
 	if (chunks.length == 0) return;
 
-	removeUnlockedTileNumbers();
+    removeUnlockedTileNumbers();
+    removeBetweenTileNumbers();
 
 	// Randomly pick one of the numbered tiles
-	var randomIndex = Math.floor(Math.random() * chunks.length);
+    var randomIndex = Math.floor(Math.random() * chunks.length);
 	for (var i = chunks.length - 1; i >= 0; i--) {
 		if (i == randomIndex) {
-			var chunk = chunks[i];
-			chunk.className = "between";
+            var chunk = chunks[i];
+            // Set new neighbors as potential
+            if (selectNewNeighbors && !removePotential) {
+                addPotentialNeighborsForID(chunks[randomIndex].id);
+            }
+            chunk.className = "between";
+            removeElementFromArray(potentialChunks, Number(chunk.id));
 			// Wait 1 second for "between" animation to finish
 			setTimeout(() => {
-				var savedText = chunk.innerText;
+				//var savedText = chunk.innerText;
 				addChunkAsUnlocked(chunk.id);
-				chunk.innerText = savedText;
-			}, 1000);
+				//chunk.innerText = savedText;
+            }, 1000);
 		}
-		else {
-			chunks[i].className = "locked";
-		}
-	}
-	potentialChunks = [];
+		else if (removePotential) {
+            addChunkAsLocked(chunks[i].id);
+        }
+    }
+    
+    if (!removePotential) {
+        updatePotentialNumbers();
+    }
 }
 
 // Move the map to the center point between all unlocked tiles
@@ -51,6 +63,27 @@ function getChunkCenterPoint(id) {
         chunk.offsetHeight * Math.floor(id / cols) + chunk.offsetHeight / 2
     ];
     return point;
+}
+
+// Set all neighbors to this chunk as potential
+function addPotentialNeighborsForID(id) {
+    id = Number(id);
+
+    var newNeighbors = getAdjacentTileIDs(id);
+    for (var i = 0; i < newNeighbors.length; i++) {
+        if (newNeighbors[i] == -1) continue;
+        else if (document.getElementById(newNeighbors[i]).className == "locked") {
+            addChunkAsPotential(newNeighbors[i]);
+        }
+    }
+}
+
+// TODO: Add button for this
+// Select all chunks neighboring "unlocked" chunks
+function selectAllNeighbors() {
+    for (var i = 0; i < unlockedChunks.length; i++) {
+        addPotentialNeighborsForID(unlockedChunks[i]);
+    }
 }
 
 // Toggle visibility of a given sidebar

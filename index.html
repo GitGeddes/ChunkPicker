@@ -25,11 +25,21 @@
 					<h2 style="margin: 0px">OSRS Chunk Picker</h2>
 					<button class="picker" onclick="pickPotentialChunk()">Pick a random potential chunk!</button>
 					<button class="picker" onclick="centerOnUnlockedTiles()">Center on unlocked tiles</button>
+					<div style="margin: 10px; line-height: 20px">
+						<label class="checkLabel">
+							<input type="checkbox" id="selectNewNeighbors">
+							Mark new neighbors as potential after rolling.
+						</label></br>
+						<label class="checkLabel">
+							<input type="checkbox" id="removePotential">
+							Remove potential chunks after rolling.
+						</label>
+					</div>
 				</div>
 				<div class="importExport" id="importExport">
 					<h2 style="margin: 0px">Import/Export</h2>
 					<button class="picker" id="importButton" onclick="document.getElementById('select').click()">Import</button>
-					<input type="file" id="select" style="display:none" onchange="JSONToChunks()">
+					<input type="file" id="select" style="display:none" onchange="JSONToChunks()" accept="text/plain">
 					<button class="picker" id="exportButton" onclick="chunksToJSON()">Export</button>
 				</div>
 			</div>

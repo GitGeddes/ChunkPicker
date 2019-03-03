@@ -31,6 +31,7 @@ function toggleChunkButton(id) {
 			addChunkAsPotential(id);
 		}
 		else if (btn.className == "potential") {
+			btn.innerText = "";
 			addChunkAsUnlocked(id);
 		}
 		else if (btn.className == "unlocked") {
@@ -56,7 +57,7 @@ function addChunkAsUnlocked(id) {
 	id = Number(id);
 	var btn = document.getElementById(id);
 	btn.className = "unlocked";
-	btn.innerText = "";
+	//btn.innerText = "";
 
 	potentialChunks = removeElementFromArray(potentialChunks, id);
 	if (unlockedChunks.indexOf(id) == -1) {
@@ -85,6 +86,7 @@ function addChunkAsLocked(id) {
 // Return 4 integers that represent neighboring chunk IDs
 // If the given chunk is on an edge, return -1 for that direction
 function getAdjacentTileIDs(id) {
+	id = Number(id);
 	// Format: top, right, bottom, left
     var neighbors = [];
 
@@ -143,11 +145,20 @@ function makeBorders(id) {
 
 // Remove the number in unlocked chunks that still have their number from random selection
 function removeUnlockedTileNumbers() {
-    var unlocked = document.getElementsByClassName("unlocked");
+	var unlocked = document.getElementsByClassName("unlocked");
     
     for (var i = 0; i < unlocked.length; i++) {
         unlocked[i].innerText = "";
-    }
+	}
+}
+	
+// Remove numbers on "between" tiles if the user is spam-clicking the picker
+function removeBetweenTileNumbers() {
+	var betweens = document.getElementsByClassName("between");
+
+	for (var i = 0; i < betweens.length; i++) {
+		betweens[i].innerText = "";
+	}
 }
 
 // Draw borders around all unlocked chunks, with no borders between other unlocked chunks

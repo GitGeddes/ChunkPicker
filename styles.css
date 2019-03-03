@@ -54,6 +54,7 @@ div.locked:hover {
 	background-color: rgba(12, 184, 46, 0.2);
 }
 .unlocked {
+	background-color: transparent;
 	border-color: red;
 	border-style: solid;
 	border-width: 0px;
@@ -65,7 +66,6 @@ div.locked:hover {
 	font-size: 50pt;
 	padding: 10%;
 	color: rgb(255, 230, 0);
-	transition: color 1s ease-in;
 
 	text-shadow:
 		-1px -1px 0 black,
@@ -178,6 +178,9 @@ button.picker:focus {
 	/* After clicking, don't show blue border */
 	outline: 0;
 }
+.checkLabel {
+	cursor: pointer;
+}
 /* End map controls */
 
 /* Import/Export menu */
@@ -236,7 +239,8 @@ button.picker:focus {
 	left: 13.5%;
 	width: 43px;
 	height: 45px;
-	background-color: rgb(230, 230, 230);
+	margin: 0px;
+	background-color: rgb(199, 199, 199);
 	border: 4px solid rgb(71, 177, 0);
 	border-radius: 10px;
 
@@ -266,7 +270,8 @@ button.picker:focus {
 	right: 13.5%;
 	width: 43px;
 	height: 45px;
-	background-color: rgb(230, 230, 230);
+	margin: 0px;
+	background-color: rgb(199, 199, 199);
 	border: 4px solid rgb(71, 177, 0);
 	border-radius: 10px;
 
