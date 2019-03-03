@@ -56,8 +56,6 @@ function centerOnUnlockedTiles() {
 
 // Disable the other checkbox when one is active
 function disableOtherCheckbox(box) {
-    console.log(box.checked);
-    console.log("ree", !box.checked);
     if (box.id == "selectNewNeighbors" && box.checked) {
         document.getElementById("removePotential").disabled = true;
     }
