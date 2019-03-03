@@ -27,11 +27,11 @@
 					<button class="picker" onclick="centerOnUnlockedTiles()">Center on unlocked tiles</button>
 					<div style="margin: 10px; line-height: 20px">
 						<label class="checkLabel">
-							<input type="checkbox" id="selectNewNeighbors">
+							<input type="checkbox" id="selectNewNeighbors" onclick="disableOtherCheckbox(this)">
 							Mark new neighbors as potential after rolling.
 						</label></br>
 						<label class="checkLabel">
-							<input type="checkbox" id="removePotential">
+							<input type="checkbox" id="removePotential" onclick="disableOtherCheckbox(this)">
 							Remove potential chunks after rolling.
 						</label>
 					</div>

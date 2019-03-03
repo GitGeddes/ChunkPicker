@@ -54,6 +54,24 @@ function centerOnUnlockedTiles() {
     fixMapEdges(document.getElementById("imgDiv"));
 }
 
+// Disable the other checkbox when one is active
+function disableOtherCheckbox(box) {
+    console.log(box.checked);
+    console.log("ree", !box.checked);
+    if (box.id == "selectNewNeighbors" && box.checked) {
+        document.getElementById("removePotential").disabled = true;
+    }
+    else if (box.id == "selectNewNeighbors" && !box.checked) {
+        document.getElementById("removePotential").disabled = false;
+    }
+    else if (box.id == "removePotential" && box.checked) {
+        document.getElementById("selectNewNeighbors").disabled = true;
+    }
+    else if (box.id == "removePotential" && !box.checked) {
+        document.getElementById("selectNewNeighbors").disabled = false;
+    }
+}
+
 // Return the X- and Y-values of a given chunk's center point
 function getChunkCenterPoint(id) {
     var chunk = document.getElementById(id);
