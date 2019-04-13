@@ -41,8 +41,6 @@ $(document).ready(function() {
 
 	// Zoom on map
 	window.addEventListener('wheel', function(e) {
-		e.preventDefault();
-
 		// Calculate the direction of scrolling
 		var dir;
 		if (e.deltaY > 0) dir = -zDelta; // Zoom out
