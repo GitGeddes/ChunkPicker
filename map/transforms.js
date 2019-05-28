@@ -48,7 +48,7 @@ $(document).ready(function() {
 
 		// Set minimum and maximum zoom of map
 		var minWidth = Math.floor(0.95 * calculateViewPortWidth());
-		var maxWidth = Math.floor(5 * calculateViewPortWidth());
+		var maxWidth = Math.floor(10 * calculateViewPortWidth());
 		if (imageDiv.offsetWidth <= minWidth && dir < 0) {
 			// Zooming out would do nothing
 			return;
@@ -81,8 +81,10 @@ $(document).ready(function() {
 
 	// Zoom on the mouse location
 	function zoomOnMouse(event, dir) {
+		// Pull number out of string, cut "px" off end
 		var leftNumber = Number(imageDiv.style.left.slice(0, -2));
 		var topNumber = Number(imageDiv.style.top.slice(0, -2));
+
 		var currentMouseX = Math.round(event.clientX);
 		var currentMouseY = Math.round(event.clientY);
 	
@@ -142,7 +144,7 @@ function calculateViewPortWidth() {
 	return width;
 }
 
-// As the map zoom, also zoom the font size of potential chunk numbers
+// As the map zooms, also zoom the font size of potential chunk numbers
 function resizePotentialFont(dir) {
 	var allChunks = document.getElementById("btnDiv").children;
 	var newFontSize = 0;
