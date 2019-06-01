@@ -1,17 +1,25 @@
 var zDelta = 0.1; // zoom delta
 
+// This runs when the page finishes loading
 $(document).ready(function() {
     buildArray(rows, cols);
 
     // Get the div holding the map images and grid of buttons
 	var imageDiv = document.getElementById("imgDiv");
 
-	// Chunk width is 96 pixels wide when the map is initially 4128 pixels wide
-	// Lumbridge is at chunk (32, 13), so position in the middle of that chunk
-	var lumbyX = 96 * 32.5;
-	var lumbyY = 96 * 13.5;
-	// Reposition the map to be centered on Lumbridge
-	repositionMapOnPoint(imageDiv, lumbyX, lumbyY);
+	// If there is a GET request in the URL, load the chunks and center on them
+	if (window.location.search.length > 1) {
+		get();
+		centerOnUnlockedTiles();
+	}
+	else {
+		// Chunk width is 96 pixels wide when the map is initially 4128 pixels wide
+		// Lumbridge is at chunk (32, 13), so position in the middle of that chunk
+		var lumbyX = 96 * 32.5;
+		var lumbyY = 96 * 13.5;
+		// Reposition the map to be centered on Lumbridge
+		repositionMapOnPoint(imageDiv, lumbyX, lumbyY);
+	}
 
 	// Allow dragging the map, and set a flag when dragging
 	$("#imgDiv").draggable({

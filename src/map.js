@@ -8,14 +8,14 @@ var borderWidth = " 2px";
 // Build an array of divs that act like buttons
 function buildArray(rows, columns) {
     for (var i = 0; i < rows; i++) {
-        for (var j = 0; j < columns; j++) {
-            var btn = document.createElement("div");
+		for (var j = 0; j < columns; j++) {
+			var btn = document.createElement("div");
 			btn.className = "locked";
 			btn.style.fontSize = "50pt";
-            btn.id = (i * columns + j).toString();
-            btn.setAttribute("onclick", "toggleChunkButton(this.id)");
-            document.getElementById("btnDiv").appendChild(btn);
-        }
+			btn.id = (i * columns + j).toString();
+			btn.setAttribute("onclick", "toggleChunkButton(this.id)");
+			document.getElementById("btnDiv").appendChild(btn);
+		}
     }
 }
 
@@ -90,16 +90,17 @@ function getAdjacentTileIDs(id) {
 	// Format: top, right, bottom, left
     var neighbors = [];
 
+	// Initialize that this chunk is not on an edge
     var top = false;
     var right = false;
     var bottom = false;
     var left = false;
 
-    // Check if this chunk is on an edge
+    // Check if this chunk is on an edge, true if on an edge
     if (0 <= id && id < cols) top = true;
     if ((id + 1) % cols == 0) right = true;
     if ((rows - 1) * cols <= id && id < rows * cols) bottom = true;
-    if (id % cols == 0) left = true;
+	if (id % cols == 0) left = true;
     
     // Top neighbor
 	if (!top) neighbors.push(Number(id) - cols);

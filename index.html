@@ -3,11 +3,11 @@
 	<head>
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script src="utils/chunkIds.js"></script>
-		<script src="map/map.js"></script>
-		<script src="map/transforms.js"></script>
-		<script src="map/buttons.js"></script>
-		<script src="map/importExport.js"></script>
+		<script src="src/map.js"></script>
+		<script src="src/transforms.js"></script>
+		<script src="src/buttons.js"></script>
+		<script src="src/importExport.js"></script>
+		<script src="src/requests.js"></script>
 		<link rel="stylesheet" href="styles.css">
 	</head>
 
@@ -41,6 +41,7 @@
 					<button class="picker" id="importButton" onclick="document.getElementById('select').click()">Import</button>
 					<input type="file" id="select" style="display:none" onchange="JSONToChunks()" accept="text/plain">
 					<button class="picker" id="exportButton" onclick="chunksToJSON()">Export</button>
+					<button class="picker" id="urlButton" onclick="encodeGet()">Generate and copy URL</button>
 				</div>
 			</div>
 			<div class="arrowLeftBackground" id="arrowLeftBackground">

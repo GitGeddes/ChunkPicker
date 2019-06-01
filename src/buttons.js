@@ -140,7 +140,8 @@ function toggleSidebar(id, side) {
     var arrow = document.getElementById(id);
     // Slide and rotate the arrow to the edge of the screen
     setTimeout(() => {
-        
+        // Wait a small amount before starting the animation because
+        // Firefox sometimes doesn't show the animation
     }, 15);
     if (id == "arrowLeft") {
         // Custom left value hasn't been set yet, so initialize it
