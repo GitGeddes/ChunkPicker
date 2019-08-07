@@ -3,23 +3,35 @@ var baseConvert = 36;
 // Convert any GET request into the array of chunks
 function get() {
     // Cut the "?" off the front of the GET request
-    var request = window.location.search.slice(1);
-    var chunks = stringToChunkIndexes(request);
+    var request = window.location.search.slice(1).split(';');
+    var chunks = stringToChunkIndexes(request[0]);
+    var potential = [];
+    if (request.length > 1)
+        potential = stringToChunkIndexes(request[1]);
 
     // Add every unpacked chunk into the unlocked chunks list
     for (var i = 0; i < chunks.length; i++) {
         addChunkAsUnlocked(chunks[i]);
     }
+
+    // add every potential chunk into the potential chunks list
+    for (var i = 0; i < potential.length; i++) {
+        addChunkAsPotential(potential[i]);
+    }
 }
 
 // Encode the chunk array into a GET request to avoid 1024 char limit
 function encodeGet() {
-    var combined = chunkIndexesIntoString();
+    var unlocked = chunkIndexesIntoString(unlockedChunks);
+    var potential = chunkIndexesIntoString(potentialChunks);
 
     // Create, copy, and remove a text field
     var dummy = document.createElement("textarea");
     document.body.appendChild(dummy);
-    dummy.value = "gitgeddes.github.com/ChunkPicker/?" + combined;
+    // insert base url of this website
+    dummy.value = document.location.href.split('?')[0];
+    // insert query for unlocked chunks
+    dummy.value += '?' + unlocked + ';' + potential;
     dummy.select();
     document.execCommand("copy");
     document.body.removeChild(dummy);
@@ -56,28 +68,18 @@ function stringToChunkIndexes(request) {
 }
 
 // Take the chunk indexes and compress them into a string
-function chunkIndexesIntoString() {
+function chunkIndexesIntoString(chunks) {
     var combinedArray = [];
     var combinedIndexes = "";
     var counter = 0;
 
-    for (var i = 0; i < unlockedChunks.length; i++) {
+    for (var i = 0; i < chunks.length; i++) {
         counter++;
-        if (unlockedChunks[i] < 10) {
-            combinedIndexes += "000" + unlockedChunks[i];
-        }
-        else if (unlockedChunks[i] < 100) {
-            combinedIndexes += "00" + unlockedChunks[i];
-        }
-        else if (unlockedChunks[i] < 1000) {
-            combinedIndexes += "0" + unlockedChunks[i];
-        }
-        else {
-            combinedIndexes += "" + unlockedChunks[i];
-        }
+        // unify length of numbers
+        combinedIndexes += chunks[i].toString().padStart(4, '0');
 
         // Combine 3 chunk indexes into base64
-        if (counter >= 3 || i >= unlockedChunks.length - 1) {
+        if (counter >= 3 || i >= chunks.length - 1) {
             combinedArray.push(convert(combinedIndexes, BASE10, BASE62));
             combinedIndexes = "";
             counter = 0;
