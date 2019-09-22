@@ -197,10 +197,10 @@ button.picker:focus {
 .updateBox {
 	position: relative;
 	width: 100%;
-	height: 50%;
+	height: 20%;
 	text-align: center;
 	line-height: 40px;
-	padding: 5% 0%;
+	padding: 50% 0%;
 	border-bottom: 2px solid black
 }
 /* End update box */
